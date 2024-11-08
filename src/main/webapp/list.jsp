@@ -6,6 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<link rel="stylesheet" href="css/styles.css">
+<script src="js/scripts.js"></script>
+<%@ include file="inc/header.jsp" %>
 <html>
 <head>
     <title>게시판 목록</title>
@@ -40,6 +43,6 @@
             </tbody>
         </table>
     </div>
-
+    <%@ include file="inc/footer.jsp" %>
 </body>
 </html>
