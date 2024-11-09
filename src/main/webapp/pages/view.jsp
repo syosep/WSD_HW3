@@ -16,14 +16,20 @@
     const urlParams = new URLSearchParams(window.location.search);
     const postId = parseInt(urlParams.get('id'));
 
+    console.log("Retrieved postId from URL:", postId);
+
     function loadPosts() {
         const data = localStorage.getItem("posts");
-        return data ? JSON.parse(data) : [];
+        const posts = data ? JSON.parse(data) : [];
+        console.log("Loaded posts from localStorage:", posts);
+        return posts;
     }
 
     function displayPostDetails() {
         const posts = loadPosts();
         const post = posts.find(p => p.id === postId);
+
+        console.log("Retrieved post:", post);
 
         if (post) {
             document.getElementById("postDetails").innerHTML = `
