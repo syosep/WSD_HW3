@@ -16,12 +16,23 @@
 </form>
 
 <script>
+    function loadPosts() {
+        const data = localStorage.getItem("posts");
+        return data ? JSON.parse(data) : [];
+    }
+
+    function savePosts(posts) {
+        localStorage.setItem("posts", JSON.stringify(posts));
+    }
+
     function addPost() {
         const title = document.getElementById("title").value;
         const author = document.getElementById("author").value;
         const content = document.getElementById("content").value;
+        let posts = loadPosts();
         const newId = posts.length ? posts[posts.length - 1].id + 1 : 1;
         posts.push({ id: newId, title, author, content });
+        savePosts(posts);
         alert("게시글이 추가되었습니다.");
         window.location.href = "list.jsp";
     }
