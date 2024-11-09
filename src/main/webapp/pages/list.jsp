@@ -39,20 +39,41 @@
 
             posts.forEach(post => {
                 console.log("Post ID:", post.id, "Title:", post.title, "Author:", post.author);
-                postList.innerHTML += `
-                    <tr>
-                        <td>${post.id}</td>
-                        <td><a href="view.jsp?id=${post.id}">${post.title}</a></td>
-                        <td>${post.author}</td>
-                        <td>
-                            <a href="edit.html?id=${post.id}">수정</a>
-                            <button onclick="deletePost(${post.id})">삭제</button>
-                        </td>
-                    </tr>
-                `;
+
+                const row = document.createElement("tr");
+
+                const idCell = document.createElement("td");
+                idCell.textContent = post.id;
+                row.appendChild(idCell);
+
+                const titleCell = document.createElement("td");
+                const titleLink = document.createElement("a");
+                titleLink.href = `view.jsp?id=${post.id}`;
+                titleLink.textContent = post.title;
+                titleCell.appendChild(titleLink);
+                row.appendChild(titleCell);
+
+                const authorCell = document.createElement("td");
+                authorCell.textContent = post.author;
+                row.appendChild(authorCell);
+
+                const actionCell = document.createElement("td");
+                const editLink = document.createElement("a");
+                editLink.href = `edit.html?id=${post.id}`;
+                editLink.textContent = "수정";
+                actionCell.appendChild(editLink);
+
+                const deleteButton = document.createElement("button");
+                deleteButton.textContent = "삭제";
+                deleteButton.onclick = () => deletePost(post.id);
+                actionCell.appendChild(deleteButton);
+
+                row.appendChild(actionCell);
+
+                postList.appendChild(row);
             });
 
-            console.log("Table HTML:", postList.innerHTML);
+            console.log("Table HTML after insertion:", postList.innerHTML);
         }
 
         function deletePost(id) {
