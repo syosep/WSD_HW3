@@ -14,7 +14,7 @@
 
         <ul>
             <li><a href="pages/list.jsp">게시판 보기</a></li>
-            <li><a href="pages/write.html">새 글 작성</a></li>
+            <li><a href="pages/write.jsp">새 글 작성</a></li>
             <li><a href="pages/form.html">폼 데이터 전송</a></li>
         </ul>
 
