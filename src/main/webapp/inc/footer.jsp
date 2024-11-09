@@ -1,4 +1,3 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
 <div class="container">
     <footer class="text-center mt-5">
         <hr>
