@@ -1,6 +1,7 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="../inc/header.jsp" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>새 글 작성</title>
@@ -9,6 +10,9 @@
 <body>
 <div class="container mt-5">
     <h1>새 글 작성</h1>
+    <%
+        request.setCharacterEncoding("UTF-8");
+    %>
     <form action="write_ok.jsp" method="post" class="mt-4">
         <div class="form-group">
             <label for="title">제목:</label>
