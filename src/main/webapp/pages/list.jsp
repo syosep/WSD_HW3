@@ -16,6 +16,16 @@
             localStorage.setItem("posts", JSON.stringify(posts));
         }
 
+        function initializePosts() {
+            if (!localStorage.getItem("posts")) {
+                const initialPosts = [
+                    { id: 1, title: "첫 번째 글", author: "작성자1", content: "첫 번째 내용입니다." },
+                    { id: 2, title: "두 번째 글", author: "작성자2", content: "두 번째 내용입니다." }
+                ];
+                savePosts(initialPosts);
+            }
+        }
+
         function displayPosts() {
             const posts = loadPosts();
             const postList = document.getElementById("postList");
@@ -42,7 +52,10 @@
             displayPosts();
         }
 
-        window.onload = displayPosts;
+        window.onload = function() {
+            initializePosts();
+            displayPosts();
+        };
     </script>
 </head>
 <body>
