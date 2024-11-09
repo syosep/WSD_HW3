@@ -9,9 +9,12 @@
     <script>
         function loadPosts() {
             const data = localStorage.getItem("posts");
-            const posts = data ? JSON.parse(data) : [];
-            console.log("Loaded posts:", posts);
-            return posts;
+            if (data) {
+                const posts = JSON.parse(data);
+                console.log("Loaded posts from localStorage:", posts);
+                return posts;
+            }
+            return [];
         }
 
         function savePosts(posts) {
@@ -32,26 +35,21 @@
         function displayPosts() {
             const posts = loadPosts();
             const postList = document.getElementById("postList");
-
-            // 데이터 로드 상태를 확인
-            console.log("Displaying posts:", posts);
-
-            // 기존 테이블 내용 비우기
             postList.innerHTML = "";
 
-            // 데이터가 있을 경우 테이블에 추가
             posts.forEach(post => {
+                console.log("Post ID:", post.id, "Title:", post.title, "Author:", post.author);
                 postList.innerHTML += `
-            <tr>
-                <td>${post.id}</td>
-                <td><a href="view.jsp?id=${post.id}">${post.title}</a></td>
-                <td>${post.author}</td>
-                <td>
-                    <a href="edit.html?id=${post.id}">수정</a>
-                    <button onclick="deletePost(${post.id})">삭제</button>
-                </td>
-            </tr>
-        `;
+                    <tr>
+                        <td>${post.id}</td>
+                        <td><a href="view.jsp?id=${post.id}">${post.title}</a></td>
+                        <td>${post.author}</td>
+                        <td>
+                            <a href="edit.html?id=${post.id}">수정</a>
+                            <button onclick="deletePost(${post.id})">삭제</button>
+                        </td>
+                    </tr>
+                `;
             });
 
             console.log("Table HTML:", postList.innerHTML);
