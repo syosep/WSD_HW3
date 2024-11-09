@@ -5,31 +5,27 @@
 <head>
     <meta charset="UTF-8">
     <title>새 글 작성</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-<div class="container mt-5">
-    <h1>새 글 작성</h1>
-    <%
-        request.setCharacterEncoding("UTF-8");
-    %>
-    <form action="write_ok.jsp" method="post" class="mt-4">
-        <div class="form-group">
-            <label for="title">제목:</label>
-            <input type="text" class="form-control" id="title" name="title" required>
-        </div>
-        <div class="form-group">
-            <label for="author">작성자:</label>
-            <input type="text" class="form-control" id="author" name="author" required>
-        </div>
-        <div class="form-group">
-            <label for="content">내용:</label>
-            <textarea class="form-control" id="content" name="content" rows="5" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-success">저장</button>
-        <a href="list.jsp" class="btn btn-secondary">취소</a>
-    </form>
-</div>
-<%@ include file="../inc/footer.jsp" %>
+<h1>새 글 작성</h1>
+<form onsubmit="event.preventDefault(); addPost();">
+    <label>제목: <input type="text" id="title" required></label><br>
+    <label>작성자: <input type="text" id="author" required></label><br>
+    <label>내용: <textarea id="content" required></textarea></label><br>
+    <button type="submit">저장</button>
+</form>
+
+<script>
+    function addPost() {
+        const title = document.getElementById("title").value;
+        const author = document.getElementById("author").value;
+        const content = document.getElementById("content").value;
+        const newId = posts.length ? posts[posts.length - 1].id + 1 : 1;
+        posts.push({ id: newId, title, author, content });
+        alert("게시글이 추가되었습니다.");
+        window.location.href = "list.jsp";
+    }
+</script>
 </body>
 </html>
+<%@ include file="../inc/footer.jsp" %>
