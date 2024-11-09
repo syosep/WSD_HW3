@@ -9,11 +9,14 @@
     <script>
         function loadPosts() {
             const data = localStorage.getItem("posts");
-            return data ? JSON.parse(data) : [];
+            const posts = data ? JSON.parse(data) : [];
+            console.log("Loaded posts:", posts);
+            return posts;
         }
 
         function savePosts(posts) {
             localStorage.setItem("posts", JSON.stringify(posts));
+            console.log("Saved posts:", posts);
         }
 
         function initializePosts() {

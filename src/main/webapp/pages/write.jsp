@@ -23,6 +23,7 @@
 
     function savePosts(posts) {
         localStorage.setItem("posts", JSON.stringify(posts));
+        console.log("Saved posts:", posts);
     }
 
     function addPost() {
