@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
+<head>
+  <meta charset="UTF-8">
+</head>
 <body>
 <header class="container mt-3 d-flex justify-content-between align-items-center">
   <h1>게시판 시스템</h1>
