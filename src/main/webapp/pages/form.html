@@ -1,27 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>폼 데이터 전송</title>
 </head>
 <body>
-    <div>
-        <form name="form1" action="form_ok.jsp" onsubmit="return validateForm()" method="post">
-            <label for="fname">First Name</label>
-            <input type="text" id="fname" name="firstname" placeholder="Your name..">
-
-            <label for="lname">Last Name</label>
-            <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-
-            <label for="country">Country</label>
-            <select id="country" name="country">
-                <option value="Australia">Australia</option>
-                <option value="Canada">Canada</option>
-                <option value="USA">USA</option>
-            </select>
-
-            <input type="submit" vlaue="Submit">
-        </form>
-    </div>
+<h1>폼 데이터 전송</h1>
+<form action="form_ok.jsp" method="post">
+    <label>이름: <input type="text" name="name" required></label><br>
+    <label>이메일: <input type="email" name="email" required></label><br>
+    <label>전화번호: <input type="tel" name="phone" required></label><br>
+    <label>주소: <input type="text" name="address" required></label><br>
+    <label>메시지: <textarea name="message" required></textarea></label><br>
+    <button type="submit">전송</button>
+</form>
 </body>
 </html>
