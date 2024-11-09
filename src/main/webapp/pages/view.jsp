@@ -1,22 +1,43 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="../inc/header.jsp" %>
-<html>
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-    <title>게시글 보기</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>게시글 상세 정보</title>
 </head>
 <body>
-    <div class="container mt-5">
-        <h1>게시글 보기</h1>
-        <div class="mb-4">
-            <p><strong>제목:</strong> <%= request.getParameter("title") %></p>
-            <p><strong>작성자:</strong> <%= request.getParameter("author") %></p>
-            <p><strong>내용:</strong> <%= request.getParameter("content") %></p>
-        </div>
-        <a href="edit.html" class="btn btn-warning">수정</a>
-        <a href="delete_ok.jsp" class="btn btn-danger">삭제</a>
-        <a href="list.jsp" class="btn btn-secondary">목록으로</a>
-    </div>
-    <%@ include file="../inc/footer.jsp" %>
+<h1>게시글 상세 정보</h1>
+<div id="postDetails">
+</div>
+<a href="list.jsp">목록으로 돌아가기</a>
+
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const postId = parseInt(urlParams.get('id'));
+
+    function loadPosts() {
+        const data = localStorage.getItem("posts");
+        return data ? JSON.parse(data) : [];
+    }
+
+    function displayPostDetails() {
+        const posts = loadPosts();
+        const post = posts.find(p => p.id === postId);
+
+        if (post) {
+            document.getElementById("postDetails").innerHTML = `
+                    <p><strong>제목:</strong> ${post.title}</p>
+                    <p><strong>작성자:</strong> ${post.author}</p>
+                    <p><strong>내용:</strong> ${post.content}</p>
+                `;
+        } else {
+            document.getElementById("postDetails").innerHTML = "<p>해당 게시글을 찾을 수 없습니다.</p>";
+        }
+    }
+
+    window.onload = displayPostDetails;
+</script>
 </body>
 </html>
+<%@ include file="../inc/footer.jsp" %>
