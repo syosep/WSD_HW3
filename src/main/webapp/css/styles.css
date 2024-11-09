@@ -1,4 +1,4 @@
-body {
+body, header, nav, .btn {
     font-family: 'Noto Sans KR', Arial, sans-serif;
     font-size: 16px;
 }
