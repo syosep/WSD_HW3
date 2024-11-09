@@ -6,3 +6,4 @@
         String content = request.getParameter("content");
 
         response.sendRedirect("list.jsp");
+        %>
