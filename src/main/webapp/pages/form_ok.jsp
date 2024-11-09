@@ -12,8 +12,8 @@
     String fname = request.getParameter("firstname");
     String lname = request.getParameter("lastname");
     String cname = request.getParameter("country");
-    out.println("이름 : " + fname + " " + lname + "<br />");
-    out.println("출신국 : " + cname + "<br />");
+    System.out.println("이름 : " + fname + " " + lname + "<br />");
+    System.out.println("출신국 : " + cname + "<br />");
 %>
 </body>
 </html>
